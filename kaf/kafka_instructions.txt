@@ -1,0 +1,6 @@
+1) start zookeeper:
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+
+2) once 1) is done, start kafka server:
+kafka-server-start /usr/local/etc/kafka/server.properties
+
