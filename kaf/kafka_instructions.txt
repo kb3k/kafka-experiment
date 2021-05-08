@@ -3,4 +3,19 @@ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
 2) once 1) is done, start kafka server:
 kafka-server-start /usr/local/etc/kafka/server.properties
+/usr/local/bin/kafka-server-start is where it lives i think
 
+3) the seconbd article uses commands like not how you do. 
+$ kafka-topics --list --zookeeper localhost:2181
+
+rather than like kafka_2.11-1.1.0 bin/kafka-topics.sh --list --zookeeper
+
+it gets the things from /usr/local/bin if you ever want to snoop around
+
+3) create a topic like this
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic kerryCreatesATopic
+
+then you can check the topics like this and it'll print out
+kafka-topics --list --zookeeper localhost:2181
+
+next steps : Sending Messages of https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
