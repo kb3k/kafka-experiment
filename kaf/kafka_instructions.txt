@@ -18,4 +18,12 @@ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partit
 then you can check the topics like this and it'll print out
 kafka-topics --list --zookeeper localhost:2181
 
-next steps : Sending Messages of https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
+4) found log dir in cat /usr/local/etc/kafka/server.properties 
+it is /usr/local/var/lib/kafka-logs
+
+kafka-run-class kafka.tools.DumpLogSegments --deep-iteration --print-data-log --files /usr/local/var/lib/kafka-logs/kerryCreatesATopic-0/00000000000000000000.log
+
+
+next steps : Consuming Messages
+
+https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05 
