@@ -23,7 +23,8 @@ it is /usr/local/var/lib/kafka-logs
 
 kafka-run-class kafka.tools.DumpLogSegments --deep-iteration --print-data-log --files /usr/local/var/lib/kafka-logs/kerryCreatesATopic-0/00000000000000000000.log
 
+5) kafka-console-consumer --bootstrap-server localhost:9092 --topic kerryCreatesATopic --from-beginning
 
-next steps : Consuming Messages
+next steps : alert system
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05 
