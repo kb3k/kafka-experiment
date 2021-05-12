@@ -2,4 +2,4 @@ https://www.techwasti.com/installation-of-apache-kafka-on-macosx/
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
 
-
+https://sodocumentation.net/apache-kafka/topic/8990/kafka-console-tools
