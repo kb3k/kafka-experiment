@@ -38,31 +38,10 @@ idk how to get it to work without the --from-beginning; how to communicate a 'la
 copy and pasted some code
 run it with : python3 producer-raw-recipes.py
 it doesn't do much. bc the BeautifulSoup select probably.
- |  select(self, selector, namespaces=None, limit=None, **kwargs)
- |      Perform a CSS selection operation on the current element.
- |      
- |      This uses the SoupSieve library.
- |      
- |      :param selector: A string containing a CSS selector.
- |      
- |      :param namespaces: A dictionary mapping namespace prefixes
- |      used in the CSS selector to namespace URIs. By default,
- |      Beautiful Soup will use the prefixes it encountered while
- |      parsing the document.
- |      
- |      :param limit: After finding this number of results, stop looking.
- |      
- |      :param kwargs: Any extra arguments you'd like to pass in to
- |      soupsieve.select().
-
 wrote the html to a file to see what I could work with since end goal is a list of links
-it's broken bc beautiful soup
-I gave up on using whatever css thing how do you look at css even
-but then dunno what I'm doing with the div either
-href
-what does it want?
-anyway good luck
+it broke bc beautiful soup but I fixed it I think
+now it's stuck on publishing recipe part 
 
-next steps : 
+next steps : figure out why it's taking so long to publish a recipe
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05 

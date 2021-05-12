@@ -1,6 +1,7 @@
 import requests
 from time import sleep
 from bs4 import BeautifulSoup
+from kafka import KafkaProducer
 
 def fetch_raw(recipe_url):
     html = None
@@ -17,34 +18,28 @@ def fetch_raw(recipe_url):
 
 
 def get_recipes(headers):
-    recipies = []
+    recipes = []
     salad_url = 'https://www.allrecipes.com/recipes/96/salad/'
     url = 'https://www.allrecipes.com/recipes/96/salad/'
     print('Accessing list')
-
     try:
         r = requests.get(url, headers=headers)
         if r.status_code == 200:
             html = r.text
             soup = BeautifulSoup(html, 'lxml')
             links = soup.findAll("a", href=True)
-#            links = [link["href"] for link in href_links]
-            print("links : ", links)
-# not quite
-            idx = 0
             for link in links:
-                sleep(2)
-                recipe = fetch_raw(link['href'])
-                print("recipe: ", recipe)
-                recipies.append(recipe)
-                idx += 1
-                if idx > 2:
-                    break
+               hReF = link["href"]
+               split_ref = hReF.split("https://")
+               if len(split_ref) > 1:
+                    if ".com" in split_ref[1]:
+                        recipes.append(hReF)
     except Exception as ex:
         print('Exception in get_recipes')
         print(str(ex))
     finally:
-        return recipies
+        print("list of recipes found. example element : ", recipes[0])
+        return recipes
 
 def publish_message(producer_instance, topic_name, key, value):
     try:
@@ -76,8 +71,12 @@ if __name__ == '__main__':
     }
     all_recipes = get_recipes(headers)
     if len(all_recipes) > 0:
+        print("connecting to producer. . .")
         kafka_producer = connect_kafka_producer()
+        print("connected to producer")
         for recipe in all_recipes:
+            print("publishing recipe for : ", recipe)
             publish_message(kafka_producer, 'raw_recipes', 'raw', recipe.strip())
         if kafka_producer is not None:
+            print("closing . . .")
             kafka_producer.close()
