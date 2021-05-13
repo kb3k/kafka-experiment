@@ -69,7 +69,8 @@ if __name__ == '__main__':
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
         'Pragma': 'no-cache'
     }
-    all_recipes = get_recipes(headers)
+    all_recipes = ["https://www.allrecipes.com/recipe/20762/california-coleslaw/", "https://www.allrecipes.com/recipe/8584/holiday-chicken-salad/", "https://www.allrecipes.com/recipe/80867/cran-broccoli-salad/"]
+#    all_recipes = get_recipes(headers)
     if len(all_recipes) > 0:
         print("connecting to producer. . .")
         kafka_producer = connect_kafka_producer()

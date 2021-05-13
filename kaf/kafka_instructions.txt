@@ -36,12 +36,22 @@ idk how to get it to work without the --from-beginning; how to communicate a 'la
 
 6) changed advertised listeners in the properties file the path is a few lines up
 copy and pasted some code
-run it with : python3 producer-raw-recipes.py
+run it with : python3 producer_raw_recipes.py
 it doesn't do much. bc the BeautifulSoup select probably.
 wrote the html to a file to see what I could work with since end goal is a list of links
 it broke bc beautiful soup but I fixed it I think
 now it's stuck on publishing recipe part 
 
-next steps : figure out why it's taking so long to publish a recipe
+tried it with same input I think as the tutorial
+all_recipes = ["https://www.allrecipes.com/recipe/20762/california-coleslaw/", "https://www.allrecipes.com/recipe/8584/holiday-chicken-salad/", "https://www.allrecipes.com/recipe/80867/cran-broccoli-salad/"]
+
+and still died. errors:
+Exception in publishing message
+KafkaTimeoutError: Failed to update metadata after 60.0 secs.
+
+next steps : figure out what a message needs to be published and give it that rather than whatever this list is. is it html it needs? do I need to switch back to the other soup thing. 
+html = r.text
+soup = BeautifulSoup(html, 'lxml')
+links = soup.select('.fixed-recipe-card__h3 a')
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05 
