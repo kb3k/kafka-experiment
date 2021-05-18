@@ -54,4 +54,9 @@ html = r.text
 soup = BeautifulSoup(html, 'lxml')
 links = soup.select('.fixed-recipe-card__h3 a')
 
+connect_kafka_producer() works fine I think
+problem is in publish_message(producer_instance, topic_name, key, value)
+it's timing out
+
+
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05 
